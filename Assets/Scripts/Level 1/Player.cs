@@ -1,0 +1,117 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Player : MonoBehaviour {
+
+    [Header("Movement")]
+    [SerializeField] Quaternion startingRotation;
+    [SerializeField] float startpos;
+    [SerializeField] float speed = 1;
+    [SerializeField] int timesHit = 0;
+    [SerializeField] float movementSpeed = 5.0f;
+
+    [Header("Shoot")]
+    [SerializeField] ParticleSystem bullet;
+    [SerializeField] ParticleSystem bulletEffect;
+
+    [Header("Hit")]
+    [SerializeField] Image healthbar;
+    [SerializeField] int hitPoints = 10;
+    [SerializeField] float hitStripPoints = 0.10f;
+    [SerializeField] ParticleSystem explodeEffect;
+    [SerializeField] ParticleSystem sparkleEffect;
+
+    public static ParticleSystem sparks;
+
+    public static bool _playerDies = false;
+
+    void Start()
+    {
+        sparks = sparkleEffect;
+        startingRotation = this.transform.rotation;
+        startpos = this.transform.rotation.eulerAngles.y; 
+    }
+
+    void Update()
+    {
+        PlayerMovement();
+        PlayerShoots();
+    }
+
+    void PlayerMovement()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(Vector3.forward * movementSpeed * Time.fixedDeltaTime, Space.Self);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(Vector3.back * movementSpeed * Time.fixedDeltaTime, Space.Self);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            timesHit++;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            timesHit--;
+        }
+        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, startpos + (timesHit * 10), 0), Time.deltaTime * speed);
+    }
+
+    IEnumerator Rotate(float rotationAmount)
+    {
+        Quaternion finalRotation = Quaternion.Euler(0, rotationAmount, 0) * startingRotation;
+
+        while (this.transform.rotation != finalRotation)
+        {
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, finalRotation, Time.deltaTime * speed);
+            yield return 0;
+        }
+    }
+
+    void PlayerShoots()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            bulletEffect.Play();
+            bullet.Play();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            bulletEffect.Stop();
+            bullet.Stop();
+        }
+    }
+
+    void PlayerDies()
+    {
+        if (hitPoints == 0)
+        {
+            explodeEffect.Play();
+            _playerDies = true;
+            Destroy(gameObject, 0.5f);
+            
+        }
+    }
+
+    public static void PlayerSparkle()
+    {
+        sparks.Play();
+    }
+
+
+    void OnParticleCollision(GameObject particleHolder)
+    {
+        if (particleHolder.name == "Enemy Bullet")
+        {
+            healthbar.fillAmount = healthbar.fillAmount - hitStripPoints;
+            hitPoints--;
+            PlayerDies();
+        }
+    }
+
+}

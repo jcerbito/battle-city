@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 115c4b250f519ce43b3e897484bdf181
+timeCreated: 1522406796
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Headliner No. 45
+  fontNames:
+  - Headliner No. 45
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
