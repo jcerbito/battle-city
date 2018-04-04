@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class TestEnemy : MonoBehaviour {
 
@@ -11,10 +13,10 @@ public class TestEnemy : MonoBehaviour {
     [SerializeField] ParticleSystem explodeEffect;
 
     [Header("Target Points")]
-    public Transform[] targetPoints;
+    public Transform targetPoints;
 
-    private int destPoint = 0;
-    public Transform currentTarget;
+   // private int destPoint = 0;
+   // public Transform currentTarget;
     private NavMeshAgent agent;
 
     public Transform taget;
@@ -23,104 +25,40 @@ public class TestEnemy : MonoBehaviour {
 
     [SerializeField] GameObject finalPoint;
 
-
+    
 
     void Start()
     {
+
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = targetPoints[destPoint].position;
+        agent.destination = targetPoints.position;
         agent.autoBraking = false;
+
+       
     }
 
     void AgentLookAround()
     {
-        var dist = Vector3.Distance(targetPoints[destPoint].position, transform.position);
-        currentTarget = targetPoints[destPoint];
+
+        //this.transform.rotation.y = this.transform.rotation.eulerAngles.y;
+
+       // taget.transform.rotation.eulerAngles.y = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(), Time.deltaTime); ;
+
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(targetPoints.position - this.transform.position), .5f * Time.deltaTime);
 
 
-        var dista = Vector3.Distance(taget.position, transform.position);
-        var distaa = Vector3.Distance(this.transform.position, transform.position);
+        
 
 
-        if (currentTarget.transform.rotation.eulerAngles.y == 0)
+        //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, this.transform.rotation.eulerAngles.y, 0), Time.deltaTime);
+
+
+        // this.transform.rotation.eulerAngles.y = this.transform.rotation.y;
+
+        if (Vector3.Distance(targetPoints.position, this.transform.position) > .5)
         {
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, -90, 0), Time.deltaTime * 5f);
+            this.transform.position += this.transform.forward * 5f * Time.deltaTime;
         }
-        else if (currentTarget.transform.rotation.eulerAngles.y == 90)
-        {
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * 5f);
-        }
-        else if (currentTarget.transform.rotation.eulerAngles.y == 180)
-        {
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, 90, 0), Time.deltaTime * 5f);
-        }
-        else if (currentTarget.transform.rotation.eulerAngles.y == (-90))
-        {
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * 5f);
-        }
-
-        if (dist < 5)
-        {
-            if (destPoint < targetPoints.Length - 1)
-            {
-                destPoint++;
-                agent.destination = targetPoints[destPoint].position;
-            }
-
-            if (_onLoop == 0)
-            {
-                if (destPoint == targetPoints.Length)
-                {
-                    agent.autoBraking = true;
-                    agent.updateRotation = false;
-
-                }
-            }
-            else if (_onLoop == 1)
-            {
-                if (destPoint == targetPoints.Length - 1)
-                {
-
-                    destPoint = 0;
-                    agent.destination = targetPoints[destPoint].position;
-
-                }
-            }
-            /**
-            if (destPoint == targetPoints.Length - 1)
-            {
-                agent.Stop;
-                destPoint = 0;
-                agent.destination = targetPoints[destPoint].position;
-                
-            }**/
-        }
-
-        if (dista - distaa < 5)
-        {
-
-            if (taget.transform.rotation.eulerAngles.y == 0)
-            {
-                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, -90, 0), Time.deltaTime * 5f);
-            }
-            else if (taget.transform.rotation.eulerAngles.y == 90)
-            {
-                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * 5f);
-            }
-            else if (taget.transform.rotation.eulerAngles.y == 180)
-            {
-                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, 90, 0), Time.deltaTime * 5f);
-            }
-            else if (taget.transform.rotation.eulerAngles.y == (-90))
-            {
-                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * 5f);
-            }
-
-            agent.autoBraking = true;
-            agent.destination = taget.position;
-
-        }
-
 
     }
 

@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 65822414964826184}
   - component: {fileID: 114458486638261482}
   - component: {fileID: 23799499812823144}
+  - component: {fileID: 208764032354952606}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -23056,3 +23057,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!208 &208764032354952606
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666275607218444}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
