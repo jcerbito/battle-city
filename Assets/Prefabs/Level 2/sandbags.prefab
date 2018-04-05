@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33968796265361918}
   - component: {fileID: 23080106546430562}
   - component: {fileID: 65965373713760008}
+  - component: {fileID: 208596664239116042}
   m_Layer: 0
   m_Name: sandbags
   m_TagString: Untagged
@@ -35,9 +36,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1051014226192960}
-  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6811138, y: 0, z: -4.5439982}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -34.25769, y: -7.92453, z: -27.677078}
+  m_LocalScale: {x: 10.277295, y: 10.277288, z: 10.277296}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,3 +94,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6856129, y: 0.8665776, z: 2.963696}
   m_Center: {x: 0.006237045, y: 0.43397063, z: 0.068891525}
+--- !u!208 &208596664239116042
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051014226192960}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.34300002, y: 0.43300003, z: 1.4820001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.006, y: 0.43400002, z: 0.069000006}
+  m_TimeToStationary: 0.5

@@ -19,13 +19,21 @@ public class Player : MonoBehaviour {
     [Header("Hit")]
     [SerializeField] Image healthbar;
     [SerializeField] int hitPoints = 10;
-    [SerializeField] float hitStripPoints = 0.10f;
+    public static float hitStripPoints = 0.10f;
     [SerializeField] ParticleSystem explodeEffect;
     [SerializeField] ParticleSystem sparkleEffect;
 
+    [SerializeField] GameObject hardBlock;
+
     public static ParticleSystem sparks;
 
+    public static int collideWithPU = 0;
+
     public static bool _playerDies = false;
+
+    
+
+
 
     void Start()
     {
@@ -111,6 +119,20 @@ public class Player : MonoBehaviour {
             healthbar.fillAmount = healthbar.fillAmount - hitStripPoints;
             hitPoints--;
             PlayerDies();
+        }
+
+    }
+
+    
+    void OnTriggerEnter(Collider powerUps)
+    {
+        if( powerUps.tag == "Life")
+        {
+            healthbar.fillAmount = healthbar.fillAmount + 1f;
+            Destroy(powerUps.gameObject, 0.1f);
+        }else if (powerUps.tag == "ProtectBase")
+        {
+            Instantiate(hardBlock, new Vector3(90, 15, 18), Quaternion.Euler(0, 0, 0));
         }
     }
 

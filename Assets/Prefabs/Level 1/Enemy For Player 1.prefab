@@ -659,9 +659,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66492b111eb66544992d95932e38516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPoints: {fileID: 4214724457215004, guid: 099ceabb5a17f964692004f2c78ea387,
+  targetPoints: {fileID: 4947197110508810, guid: c61882b03aa5b0547b6d25c24ed1d29f,
     type: 2}
-  _onLoop: 0
+  status: 2
   speed: 5
 --- !u!114 &114430113539340466
 MonoBehaviour:
@@ -762,10 +762,10 @@ NavMeshAgent:
   m_GameObject: {fileID: 1598518758802686}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.86
+  m_Radius: 1
   m_Speed: 3
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 10
   m_AngularSpeed: 120
   m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1

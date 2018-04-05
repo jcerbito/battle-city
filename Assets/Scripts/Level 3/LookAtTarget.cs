@@ -8,7 +8,7 @@ public class LookAtTarget : MonoBehaviour {
     [Header("Target Points")]
     public Transform targetPoints;
     private NavMeshAgent agent;
-    public int _onLoop;
+    public int status;
     public float speed = 5f;
 
 
@@ -22,17 +22,27 @@ public class LookAtTarget : MonoBehaviour {
 
     void Update () {
        
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(targetPoints.position - this.transform.position), .5f * Time.deltaTime);
+        if (status == 1) { 
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(targetPoints.position - this.transform.position), .5f * Time.deltaTime);
 
-        if (Vector3.Distance(targetPoints.position, this.transform.position) > 50)
+                if (Vector3.Distance(targetPoints.position, this.transform.position) > 50)
+                {
+                        this.transform.position += this.transform.forward * speed * Time.deltaTime;
+                }
+                else
+                {
+                        agent.isStopped = true;
+                }
+        }else if (status == 2)
         {
-            this.transform.position += this.transform.forward * speed * Time.deltaTime;
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(targetPoints.position - this.transform.position), .5f * Time.deltaTime);
+
+            if (Vector3.Distance(targetPoints.position, this.transform.position) > 0)
+            {
+               this.transform.position += this.transform.forward * speed * Time.deltaTime;
+               
+            }
         }
-        else
-        {
-            agent.isStopped = true;
-        }
-        
-        
+
     }
 }
