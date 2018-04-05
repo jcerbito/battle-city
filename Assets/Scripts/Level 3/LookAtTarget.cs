@@ -30,7 +30,7 @@ public class LookAtTarget : MonoBehaviour {
         }
         else
         {
-            agent.Stop();
+            agent.isStopped = true;
         }
         
         

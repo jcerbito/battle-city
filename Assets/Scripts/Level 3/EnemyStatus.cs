@@ -8,6 +8,7 @@ public class EnemyStatus : MonoBehaviour {
     [Header("Hit")]
     [SerializeField] Image healthbar;
     [SerializeField] int hitPoints = 7;
+    [SerializeField] float hitStripPoints = 0.25f;
     [SerializeField] ParticleSystem explodeEffect;
 
     void EnemyDies()
@@ -24,7 +25,7 @@ public class EnemyStatus : MonoBehaviour {
     {
         if (particleHolder.name == "Player Bullet")
         {
-            healthbar.fillAmount = healthbar.fillAmount - 0.25f;
+            healthbar.fillAmount = healthbar.fillAmount - hitStripPoints;
             hitPoints--;
             EnemyDies();
         }
