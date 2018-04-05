@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameTime4 : MonoBehaviour {
 
     private float countdown = 1f;
@@ -15,7 +16,7 @@ public class GameTime4 : MonoBehaviour {
     void Update()
     {
         Timer.timer -= 1 * Time.deltaTime;
-        Timer.timer = Mathf.Clamp(Timer.timer, 0, 50);
+        Timer.timer = Mathf.Clamp(Timer.timer, 0, 80);
 
         if (Base._baseDestroyed == true || Player._playerDies == true)
         {

@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
     [Header("Hit")]
     [SerializeField] Image healthbar;
     [SerializeField] int hitPoints = 10;
-    public static float hitStripPoints = 0.10f;
+    [SerializeField] float hitStripPoints = 0.10f;
     [SerializeField] ParticleSystem explodeEffect;
     [SerializeField] ParticleSystem sparkleEffect;
 
@@ -31,7 +31,9 @@ public class Player : MonoBehaviour {
 
     public static bool _playerDies = false;
 
-    
+    public int pX;
+    public int pY;
+    public int pZ;
 
 
 
@@ -132,7 +134,8 @@ public class Player : MonoBehaviour {
             Destroy(powerUps.gameObject, 0.1f);
         }else if (powerUps.tag == "ProtectBase")
         {
-            Instantiate(hardBlock, new Vector3(90, 15, 18), Quaternion.Euler(0, 0, 0));
+            Instantiate(hardBlock, new Vector3(pX, pY, pZ), Quaternion.Euler(0, 0, 0));
+            Destroy(powerUps.gameObject, 0.1f);
         }
     }
 
