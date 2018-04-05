@@ -34,7 +34,7 @@ public class GameTime5 : MonoBehaviour {
             countdown = Mathf.Clamp(countdown, 0, 1);
             if (countdown == 0)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Level5");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("End");
             }
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -34,14 +35,13 @@ public class Player : MonoBehaviour {
     public int pX;
     public int pY;
     public int pZ;
-
-
+    
 
     void Start()
     {
         sparks = sparkleEffect;
         startingRotation = this.transform.rotation;
-        startpos = this.transform.rotation.eulerAngles.y; 
+        startpos = this.transform.rotation.eulerAngles.y;
     }
 
     void Update()
@@ -94,6 +94,11 @@ public class Player : MonoBehaviour {
         {
             bulletEffect.Stop();
             bullet.Stop();
+        }
+
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

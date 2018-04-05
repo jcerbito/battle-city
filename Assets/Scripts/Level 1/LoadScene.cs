@@ -13,7 +13,7 @@ public class LoadScene : MonoBehaviour {
 	void Update () {
         if (Input.anyKey)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
         }
 
     }

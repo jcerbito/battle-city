@@ -20,6 +20,7 @@ public class GameTime : MonoBehaviour {
         
         if(Base._baseDestroyed == true || Player._playerDies == true)
         {
+            
             countdown -= 1 * Time.deltaTime;
             countdown = Mathf.Clamp(countdown, 0, 1);
             if (countdown == 0) { 

@@ -9,5 +9,26 @@ EditorBuildSettings:
     path: Assets/Scenes/Splashscreen.unity
     guid: 375002b5ea7049941a1bcf3f078bcf4b
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 00f119cea6c92784e8edf6d7331e8bc1
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 4073a647ae9189b42aa51f2a312e6362
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 04d2bd355b566b948b4a6b1fd552cfc7
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 7c64aff72363ac844af7e21801221690
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 5a0d29ad70656034aadf48b8af83cb21
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: 438d59cc0a1efe34c815bf592328e52a
+  - enabled: 1
+    path: Assets/Scenes/Gameover.unity
+    guid: f2c19ccd8c4c50c40b15607edc363435
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 7d95ef7a23a13c04ead5d85284f7d85b
