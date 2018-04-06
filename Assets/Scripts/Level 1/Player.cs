@@ -60,15 +60,15 @@ public class Player : MonoBehaviour {
         {
             transform.Translate(Vector3.back * movementSpeed * Time.fixedDeltaTime, Space.Self);
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             timesHit++;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             timesHit--;
         }
-        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, startpos + (timesHit * 10), 0), Time.deltaTime * speed);
+        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0, timesHit, 0), Time.deltaTime * speed);
     }
 
     IEnumerator Rotate(float rotationAmount)

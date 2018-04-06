@@ -12,7 +12,8 @@ public class MainMenu : MonoBehaviour {
 
     public void QuitGame()
     {
-        SceneManager.LoadScene("Splashscreen");
+        //SceneManager.LoadScene("Splashscreen");
+        Application.Quit();
     }
 
 	

@@ -14,6 +14,7 @@ public class GameOver : MonoBehaviour {
 
     public void Quit()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Splashscreen");
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("Splashscreen");
+        Application.Quit();
     }
 }
